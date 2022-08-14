@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from msilib.schema import Media
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,12 +80,24 @@ WSGI_APPLICATION = 'lugares_seguros2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd5q6haa7hlok6j',
+        'USER': 'jecrvdeyxtfwmd',
+        'HOST': 'ec2-34-235-31-124.compute-1.amazonaws.com',
+        'PASSWORD': 'ad638241fb34d97299f9c8945b72e094e2f6d536edd44388d3c8d8eae6b4ac4c',
+        'PORT': 5432
+
+        }
     }
-}
 
 
 # Password validation
@@ -134,3 +148,8 @@ REST_FRAMEWORK = {
         #'rest_framework.renderers.BrowsableAPIRenderer',
     ]
 }
+
+#media
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
